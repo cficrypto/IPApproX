@@ -44,10 +44,10 @@ class IPConfig(object):
             self.sub_ips = OrderedDict()
 
     def export_make(self, abs_path, more_opts, target_tech=None, source='ips', local=False, simulator='vsim'):
-        if simulator is "vsim":
+        if simulator == "vsim":
             mk_preamble = MK_PREAMBLE
             vmake = "vmake"
-        elif simulator is "ncsim":
+        elif simulator == "ncsim":
             mk_preamble = MKN_PREAMBLE
             vmake = "nmake"
         ip_path_env = "$(IPS_PATH)" if source=='ips' else "$(RTL_PATH)"

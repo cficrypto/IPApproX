@@ -126,7 +126,7 @@ class SubIPConfig(object):
         self.synth_tools = self.__get_synth_tools() # eda tools supported (for RTL encrypted models)
 
     def export_make(self, abs_path, more_opts, target_tech=None, local=False, simulator='vsim'):
-        if simulator is "vsim":
+        if simulator == "vsim":
             mk_subiprule = MK_SUBIPRULE
             mk_buildcmd_svlog = MK_BUILDCMD_SVLOG
             mk_buildcmd_vhdl = MK_BUILDCMD_VHDL
@@ -134,7 +134,7 @@ class SubIPConfig(object):
             vcom_opts = self.vcom_opts
             if 'all' not in self.sim_tools and 'questa' not in self.sim_tools:
                 return "\n"
-        elif simulator is "ncsim":
+        elif simulator == "ncsim":
             mk_subiprule = MKN_SUBIPRULE
             mk_buildcmd_svlog = MKN_BUILDCMD_SVLOG
             mk_buildcmd_vhdl = MKN_BUILDCMD_VHDL
@@ -179,7 +179,7 @@ class SubIPConfig(object):
         if len(vlog_files) > 0:
             if target_tech=='xilinx':
                 defines = "+define+PULP_FPGA_EMUL +define+PULP_FPGA_SIM -suppress 2583"
-            elif simulator is 'vsim':
+            elif simulator == 'vsim':
                 defines = "-suppress 2583 -suppress 13314"
             else:
                 defines = ""
